@@ -1,0 +1,25 @@
+header h1 {
+    text-align: center;
+}
+
+main ul {
+}
+
+main ul li {
+    list-style: none;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 10em;
+    margin-right: 10em;
+    border-style: outset;
+}
+
+main ul li input {
+
+}
+
+main img {
+    position: absolute;
+    bottom: 5em;
+    right: 5em;
+}

@@ -19,13 +19,24 @@
         <main>
             <!--List of to-do items-->
             <ul>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(0)">Checkbox item 1</li>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(1)">Checkbox item 2</li>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(2)">Checkbox item 3</li>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(3)">Checkbox item 4</li>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(4)">Checkbox item 5</li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(0)"><span id="task1"></span></li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(1)"><span id="task2"></span></li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(2)"><span id="task3"></span></li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(3)"><span id="task4"></span></li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(4)"><span id="task5"></span></li>
             </ul>
-            <button onclick="addItem()">Add new item</button>
+            <div id="additemform">
+                <form>
+                Task name:
+                <input id="taskname" type="text" name="taskname">
+                <br>
+                Priority Level:
+                <input id="prioritylevel" type="text" name="priority">
+                <br>
+                </form>
+                <button onclick="addNewItem()">Add</button>
+            </div>
+            <button id="addnewitembutton" onclick="addItem()">Add new item</button>
         </main>
     </body>
 </html>

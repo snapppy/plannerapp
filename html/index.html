@@ -6,6 +6,7 @@
         <title> Home Page</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width"> <!-- max width of browser (or viewport) should be size of device being used. -->
+        <script type="text/javascript" src="../js/index.js"></script>
         <link  rel="stylesheet" type="text/css" href="../css/index.css">
     </head>
     <body>
@@ -18,13 +19,13 @@
         <main>
             <!--List of to-do items-->
             <ul>
-                <li><input type="checkbox" name="item1" value="item1">Checkbox item 1</li>
-                <li><input type="checkbox" name="item1" value="item1">Checkbox item 2</li>
-                <li><input type="checkbox" name="item1" value="item1">Checkbox item 3</li>
-                <li><input type="checkbox" name="item1" value="item1">Checkbox item 4</li>
-                <li><input type="checkbox" name="item1" value="item1">Checkbox item 5</li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(0)">Checkbox item 1</li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(1)">Checkbox item 2</li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(2)">Checkbox item 3</li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(3)">Checkbox item 4</li>
+                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(4)">Checkbox item 5</li>
             </ul>
-            <img src="../images/addnew.png">
+            <button onclick="addItem()">Add new item</button>
         </main>
     </body>
 </html>

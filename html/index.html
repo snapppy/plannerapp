@@ -1,31 +1,61 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <title> Home Page</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width"> <!-- max width of browser (or viewport) should be size of device being used. -->
-        <script type="text/javascript" src="../js/index.js"></script>
-        <link  rel="stylesheet" type="text/css" href="../css/index.css">
-    </head>
-    <body>
-        <header>
-            <h1>CoolAppName</h1>
-        </header>
-        <!-- Where the navigation links will go -->
-        <nav></nav>
-        <!-- Hold main content of the webpage -->
-        <main>
-            <!--List of to-do items-->
-            <ul>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(0)">Checkbox item 1</li>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(1)">Checkbox item 2</li>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(2)">Checkbox item 3</li>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(3)">Checkbox item 4</li>
-                <li class="inputitem"><input type="checkbox" name="item1" value="item1" onclick="deleteItem(4)">Checkbox item 5</li>
-            </ul>
-            <button onclick="addItem()">Add new item</button>
-        </main>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title> Home Page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <!-- max width of browser (or viewport) should be size of device being used. -->
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>CoolAppName</h1>
+    </header>
+    <main>
+        <!--List of to-do items-->
+        <form id="item-list">
+            <label id="task1">
+                <input type="checkbox" onclick="deleteItem(0)">
+                <label id="tasklabel1"></label>
+            </label>
+            <label id="task2">
+                <input type="checkbox" onclick="deleteItem(1)">
+                <label id="tasklabel2"></label>
+            </label>
+            <label id="task3">
+                <input type="checkbox" onclick="deleteItem(2)">
+                <label id="tasklabel3"></label>
+            </label>
+            <label id="task4">
+                <input type="checkbox" onclick="deleteItem(3)">
+                <label id="tasklabel4"></label>
+            </label>
+            <label id="task5">
+                <input type="checkbox" onclick="deleteItem(4)">
+                <label id="tasklabel5"></label>
+            </label>
+        </form>
+        <div id="additemform-container">
+           <div id="additemform">
+            <form> Task name:
+                <input id="taskname" type="text" name="taskname">
+                <br> Priority Level:
+                <br>
+                <input id="prioritylevel" type="range" min="0" max="4" value="2" />
+            </form>
+            <button onclick="addNewItem()">Add</button>
+            </div>
+        </div>
+        <div id="addnewitembutton" ontouchstart="addItem()">
+            <div id="verticalcross"></div>
+            <div id="horizontalcross"></div>
+        </div>
+    </main>
+</body>
+
 </html>

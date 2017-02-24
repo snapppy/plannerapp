@@ -3,6 +3,8 @@
 */
 
 var items = [];
+localStorage.setItem("items", JSON.stringify(items));
+//localStorage.getItem("items");
 
 function Item(taskName, priorityLevel) {
     this.taskName = taskName;
@@ -25,12 +27,12 @@ function addNewItem() {
     taskname = document.getElementById("taskname").value,
     prioritylevel = document.getElementById("prioritylevel").value,
     item = new Item(taskname, prioritylevel);
-    items.push(item);
+    localStorage.getItem("items").push(item);
 
     sortItems();
 
     //loop to the length of the array, or 5 times at the max
-    for (i = 0; i < ((items.length >= 5) ? 5:items.length); i++) {
+    for (i = 0; i < ((localStorage.getItem("items").length >= 5) ? 5:items.length); i++) {
         var task = document.querySelector('#task' + (i + 1));
         document.getElementById("tasklabel" + (i + 1)).innerHTML = items[i].taskName;
         task.style.display = "flex";
@@ -51,7 +53,7 @@ function addNewItem() {
 function deleteItem(index) {
 
     var task = document.querySelector('#task' + (index + 1));
-    items.pop();
+    localStorage.getItem("items").pop();
 
     /*TO-DO: Make off screen transitions for deleting items.
     */
@@ -67,14 +69,14 @@ function deleteItem(index) {
 function sortItems() {
     //my sort, with a function expression, anonymous function.
     //with priority number 5 being on the front of the array
-    items.sort(function(a, b) {
+    localStorage.getItem("items").sort(function(a, b) {
         return b.priorityLevel - a.priorityLevel;
     });
 }
 
 function colorItem(index) {
         var task = document.querySelector('#task' + (index + 1));
-        switch (items[index].priorityLevel) {
+    switch (localStorage.getItem("items")[index].priorityLevel) {
             case '0':
                 task.style.backgroundColor = "#F8C6CF";
                 break;

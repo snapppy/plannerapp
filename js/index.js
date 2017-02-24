@@ -1,9 +1,20 @@
-/*TO-DO:
-* When no tasks are made, display the default, Create a new task!
-*/
+/*TO-DO: Create a JSON object and store in local storage*/
 
+/*JavaScript Array*/
 var items = [];
 
+//localStorage.setItem("items", JSON.stringify(items));
+
+/*
+* When no tasks are made, display the default, Create a new task!
+*/
+window.onload = function() {
+    createDefaultTask();
+    var addButton = document.getElementById("addnewitembutton");
+    addButton.ontouchstart = addItem;
+}
+
+/*JavaScript Object Prototype*/
 function Item(taskName, priorityLevel) {
     this.taskName = taskName;
     this.priorityLevel = priorityLevel;
@@ -33,17 +44,14 @@ function addNewItem() {
     for (i = 0; i < ((items.length >= 5) ? 5:items.length); i++) {
         var task = document.querySelector('#task' + (i + 1));
         document.getElementById("tasklabel" + (i + 1)).innerHTML = items[i].taskName;
+        task.style.left = "0px";
         task.style.display = "flex";
         colorItem(i);
     }
 
     var form = document.querySelector("#additemform-container");
 
-    //make form fade out before disapearing.
-    /*TO-DO: Make transition work for fade out*/
-
     form.style.opacity = 0;
-
     form.addEventListener("transitionend", addItemFormTransition(form),true);
 
 }
@@ -52,9 +60,6 @@ function deleteItem(index) {
 
     var task = document.querySelector('#task' + (index + 1));
     items.pop();
-
-    /*TO-DO: Make off screen transitions for deleting items.
-    */
 
     task.style.left = "-400px";
 
@@ -104,13 +109,15 @@ function addItemFormTransition(form) {
     }
 }
 
-function taskTransition(task) {
-    console.log("In the taskTransition function");
-    if (task.propertyName === 'left') {
-        console.log("if statement true");
-        task.style.display = "none";
-        task.style.left = "0px";
-    }
+function createDefaultTask() {
+    var i = 0,
+    item = new Item("Create a new task", '4');
+    items.push(item);
+
+    var task = document.querySelector('#task1');
+    document.getElementById("tasklabel1").innerHTML = items[0].taskName;
+    task.style.display = "flex";
+    colorItem(0);
 }
 
 

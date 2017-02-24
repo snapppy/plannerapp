@@ -1,21 +1,46 @@
+body {
+    background-color: #FFFFFA;
+}
+
 header h1 {
     font-family: 'Raleway', sans-serif;
     text-align: center;
 }
 
-main ul {
-}
-
-main img {
-    position: absolute;
-    bottom: 5em;
-    right: 5em;
-}
-
 #addnewitembutton {
     position: absolute;
-    bottom: 5em;
-    right: 5em;
+    bottom: 2em;
+    right: 2em;
+    background-color: #E83151;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #BE2943 #7F1B2D #7F1B2D #BE2943;
+    transition: all .5 linear;
+}
+
+#addnewitembutton:active {
+    border-color: #7F1B2D #BE2943 #BE2943 #7F1B2D;
+}
+
+#verticalcross {
+    position: absolute;
+    height: 50px;
+    width: 15px;
+    background-color: #FFFFFA;
+    left: 25px;
+    top: 8px;
+}
+
+#horizontalcross {
+    position: absolute;
+    height: 15px;
+    width: 50px;
+    background-color: #FFFFFA;
+    left: 8px;
+    top: 25px;
 }
 
 #item-list {
@@ -50,16 +75,6 @@ main img {
     width: 0;
     height: 0;
 }
-
-/*.item-list-tasks > span {
-    display: flex;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border: 3px solid #515052;
-    margin-right: 15px;
-    border-radius: 5px;
-}*/
 
 #additemform-container {
     display: flex;

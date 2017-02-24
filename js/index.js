@@ -1,14 +1,14 @@
-/*TO-DO: Create a JSON object and store in local storage*/
-
-/*JavaScript Array*/
-var items = [];
-
-//localStorage.setItem("items", JSON.stringify(items));
-
 /*
 * When no tasks are made, display the default, Create a new task!
 */
 window.onload = function() {
+    /*TO-DO: Create a JSON object and store in local storage*/
+
+    /*JavaScript Array*/
+    var itemArray = [];
+
+    localStorage.setItem("items", JSON.stringify(itemArray));
+
     createDefaultTask();
     var addButton = document.getElementById("addnewitembutton");
     addButton.ontouchstart = addItem;
@@ -35,9 +35,10 @@ function addNewItem() {
     var i = 0,
     taskname = document.getElementById("taskname").value,
     prioritylevel = document.getElementById("prioritylevel").value,
+    items = JSON.parse(localStorage.getItem("items"));
     item = new Item(taskname, prioritylevel);
     items.push(item);
-
+    localStorage.setItem("items", JSON.stringify(items));
     sortItems();
 
     //loop to the length of the array, or 5 times at the max
@@ -53,13 +54,14 @@ function addNewItem() {
 
     form.style.opacity = 0;
     form.addEventListener("transitionend", addItemFormTransition(form),true);
-
 }
 
 function deleteItem(index) {
 
-    var task = document.querySelector('#task' + (index + 1));
+    var task = document.querySelector('#task' + (index + 1)),
+        items = JSON.parse(localStorage.getItem("items"));
     items.pop();
+    localStorage.setItem("items", JSON.stringify(items));
 
     task.style.left = "-400px";
 
@@ -69,16 +71,19 @@ function deleteItem(index) {
         });
 }
 
-function sortItems() {
+function sortItems(items) {
     //my sort, with a function expression, anonymous function.
     //with priority number 5 being on the front of the array
+    var items = JSON.parse(localStorage.getItem("items"));
     items.sort(function(a, b) {
         return b.priorityLevel - a.priorityLevel;
     });
+    localStorage.setItem("items", JSON.stringify(items));
 }
 
 function colorItem(index) {
-        var task = document.querySelector('#task' + (index + 1));
+        var items = JSON.parse(localStorage.getItem("items")),
+            task = document.querySelector('#task' + (index + 1));
         switch (items[index].priorityLevel) {
             case '0':
                 task.style.backgroundColor = "#F8C6CF";
@@ -99,6 +104,7 @@ function colorItem(index) {
                 break;
 
         }
+    localStorage.setItem("items", JSON.stringify(items));
 }
 
 function addItemFormTransition(form) {
@@ -111,13 +117,21 @@ function addItemFormTransition(form) {
 
 function createDefaultTask() {
     var i = 0,
-    item = new Item("Create a new task", '4');
+    item = new Item("Create a new task", '4'),
+    items = JSON.parse(localStorage.getItem("items"));
+
     items.push(item);
+    localStorage.setItem("items", JSON.stringify(items));
 
     var task = document.querySelector('#task1');
     document.getElementById("tasklabel1").innerHTML = items[0].taskName;
     task.style.display = "flex";
     colorItem(0);
+
+    console.log("createDefaultTask()");
+    console.log(items);
+    console.log(items[0].priorityLevel);
+
 }
 
 
